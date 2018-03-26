@@ -1,0 +1,26 @@
+cssbeautify:
+  js:
+    /libraries/cssbeautify/cssbeautify.js: {}
+
+code-prettify:
+  js:
+    /libraries/code-prettify/src/run_prettify.js: {}
+    /libraries/code-prettify/src/lang-css.js: {}
+  css:
+    theme:
+      css/code-prettify.css: {}
+
+stylesheet-inspector:
+  js:
+    js/stylesheet-inspector.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    - cohesion_devel/cssbeautify
+    - cohesion_devel/code-prettify
+
+hide-errors-warnings:
+  css:
+    theme:
+      css/hide-errors-warnings.css: {}

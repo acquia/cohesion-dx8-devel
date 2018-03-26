@@ -1,0 +1,20 @@
+cohesion_devel.administration.stylesheet_inspector:
+  title: 'Stylesheet inspector'
+  description: 'Stylesheet inspector'
+  route_name: cohesion_devel.administration.stylesheet_inspector
+  parent: cohesion.developer
+  weight: 0
+
+cohesion_devel.administration.settings:
+  title: 'Devel settings'
+  description: 'Devel settings'
+  route_name: cohesion_devel.settings
+  parent: cohesion.developer
+  weight: 1
+
+cohesion_devel.administration.sass_variables:
+  title: 'Sass variables'
+  description: 'Sass variables'
+  route_name: cohesion_devel.administration.sass_variables
+  parent: cohesion.developer
+  weight: 2

@@ -1,0 +1,23 @@
+cohesion_devel.administration.stylesheet_inspector:
+  path: 'admin/cohesion/developer/stylesheet-inspector'
+  defaults:
+    _controller: '\Drupal\cohesion_devel\Controller\StyleInspectorController::index'
+    _title: 'Stylesheet inspector'
+  requirements:
+    _permission: 'administer cohesion'
+
+cohesion_devel.administration.sass_variables:
+  path: 'admin/cohesion/developer/sass-variables'
+  defaults:
+    _controller: '\Drupal\cohesion_devel\Controller\SassVariablesController::view'
+    _title: 'Sass variables'
+  requirements:
+    _permission: 'administer cohesion'
+
+cohesion_devel.settings:
+  path: '/admin/cohesion/developer/devel_settings'
+  defaults:
+    _form: '\Drupal\cohesion_devel\Form\DevelSettingsForm'
+    _title: 'Devel settings'
+  requirements:
+    _permission: 'administer site configuration'

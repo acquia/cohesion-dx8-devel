@@ -1,0 +1,4 @@
+.messages.messages--error,
+.messages.messages--warning {
+    display: none !important;
+}

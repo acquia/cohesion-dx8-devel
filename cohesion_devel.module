@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function cohesion_devel_theme($existing, $type, $theme, $path) {
+  return [
+    'stylesheet_inspector' => [
+      'variables' => ['data' => []],
+    ],
+    'sass_variables' => [
+      'variables' => ['colours' => []],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_page_attachments().
+ * @param array $attachments
+ */
+function cohesion_devel_page_attachments(array &$attachments) {
+
+  $is_admin = \Drupal::service('router.admin_context')->isAdminRoute();
+  $config = \Drupal::configFactory()->getEditable('cohesion_devel.settings');
+
+  // Hide all errors and warnings?
+  $status = $config->get("supress_errors_and_warnings");
+  if ($status && $is_admin) {
+    $attachments['#attached']['library'][] = 'cohesion_devel/hide-errors-warnings';
+  }
+
+}

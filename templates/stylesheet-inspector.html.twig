@@ -1,0 +1,22 @@
+<div class="stylesheet-inspector">
+    {% for type, styles in data %}
+        <details class="form-wrapper">
+            <summary>
+                {{ type }}
+                <small>({{ styles ? styles|length : '0' }})</small>
+            </summary>
+            <div class="details-wrapper">
+                {% for name, css in styles %}
+                    <details class="form-wrapper">
+                        <summary>{{ name }}</summary>
+                        <div class="details-wrapper">
+                            <pre class="linenums">
+                                <code class="lang-css">{{ css }}</code>
+                            </pre>
+                        </div>
+                    </details>
+                {% endfor %}
+            </div>
+        </details>
+    {% endfor %}
+</div>
