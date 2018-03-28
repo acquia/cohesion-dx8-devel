@@ -1,0 +1,11 @@
+{
+    "name": "cohesion/dx8-devel",
+    "authors": [
+        {
+            "name": "Clive Linsell",
+            "email": "clive.linsell@coherence.co.uk"
+        }
+    ],
+    "require": {},
+    "type": "drupal-module"
+}
