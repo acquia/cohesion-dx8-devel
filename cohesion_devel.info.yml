@@ -2,6 +2,6 @@ name: Site Studio developer
 type: module
 description: 'Developer features for Site Studio.'
 core: 8.x
-package: cohesion
+package: Site Studio
 dependencies:
   - cohesion
