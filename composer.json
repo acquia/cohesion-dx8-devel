@@ -1,9 +1,9 @@
 {
-    "name": "cohesion/dx8-devel",
+    "name": "acquia/cohesion-dx8-devel",
     "authors": [
         {
-            "name": "Clive Linsell",
-            "email": "clive.linsell@coherence.co.uk"
+            "name": "Acquia Engineering",
+            "email": "cohesion-devs@acquia.com"
         }
     ],
     "require": {},
