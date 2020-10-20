@@ -1,5 +1,7 @@
 {
     "name": "acquia/cohesion-dx8-devel",
+    "description": "Developer features for Site Studio.",
+    "license": "GPL-2.0-or-later",
     "authors": [
         {
             "name": "Acquia Engineering",
