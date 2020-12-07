@@ -1,3 +1,15 @@
+## Installation with Composer
+
+Using composer is the preferred way of managing your module as composer handles dependencies automatically and there is less margin for error. You can find out more about composer and how to install it here: https://getcomposer.org/. It is not recommended to edit your composer.json file manually.
+
+Open up your terminal and navigate to your project root directory.
+
+Run the following commands to require the module:
+
+```
+composer require acquia/cohesion-dx8-devel
+```
+
 ## Libraries
 
 The stylesheet inspector requires:
