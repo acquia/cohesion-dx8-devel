@@ -1,4 +1,4 @@
-# Contributing to R&D Open Source Template
+# Contributing
 Feature requests, bugs, support requests, and milestones are tracked via the [issue queue](https://github.com/acquia/cohesion-dx8-devel/issues).
 
 Before submitting an issue or pull request, please read and take the time to understand this guide. Issues not adhering to these guidelines may be closed.
