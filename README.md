@@ -10,6 +10,14 @@ Run the following commands to require the module:
 composer require acquia/cohesion-dx8-devel
 ```
 
+## Enable The Module
+
+You can now enable the modules via drush with the following commands:
+
+```
+drush pm-enable cohesion_devel
+```
+
 ## Libraries
 
 The stylesheet inspector requires:
