@@ -3,6 +3,5 @@ type: module
 description: 'Developer features for Site Studio.'
 core_version_requirement: ^8 || ^9
 package: Site Studio
-
 dependencies:
   - cohesion
