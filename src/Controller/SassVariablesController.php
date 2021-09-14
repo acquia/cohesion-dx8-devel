@@ -20,8 +20,9 @@ class SassVariablesController extends ControllerBase {
 
   protected function colourVars() {
     $colours = [];
-    $module = system_get_info('module', 'cohesion');
+    $extension_list = \Drupal::service('extension.list.module');
 
+    $module = $extension_list->getExtensionInfo('cohesion');
     if (version_compare('8.x-3.11', $module['version']) === -1) {
       // New (>=5.0)
       $colour_entities = $this->entityTypeManager()
