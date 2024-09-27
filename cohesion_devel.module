@@ -48,7 +48,8 @@ function cohesion_devel_library_info_alter(&$libraries, $extension) {
     $path = \Drupal::service('file_url_generator')->generateString('public://cohesion/scripts/dx8/app.js');
 
     // Load the app.js directly from the cohesion-services directory.
-    $app_js_library = array_shift($libraries['cohesion-admin-scripts']['js'][$path]);
-    $libraries['cohesion-admin-scripts']['js'][$cohesion_dev_path] = $app_js_library;
+    unset($libraries['cohesion-admin-scripts']['js'][$path]);
+    $libraries['cohesion-admin-scripts']['js'][$cohesion_dev_path] = ['minified' => true];
+
   }
 }
