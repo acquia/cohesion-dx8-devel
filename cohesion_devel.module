@@ -30,3 +30,25 @@ function cohesion_devel_page_attachments(array &$attachments) {
   }
 
 }
+
+/**
+ * Implements hook_library_info_alter().
+ *
+ * @param $libraries
+ * @param $extension
+ * @return void
+ */
+function cohesion_devel_library_info_alter(&$libraries, $extension) {
+  $cohesion_dev_path = 'cohesion-services/dx8-gateway/assets/dx8/scripts/app.js';
+  if (
+    isset($libraries['cohesion-admin-scripts']) &&
+    file_exists(\Drupal::service('extension.path.resolver')->getPath('module', 'cohesion') . '/' . $cohesion_dev_path)) {
+
+    // Get relative path from stream wrapper.
+    $path = \Drupal::service('file_url_generator')->generateString('public://cohesion/scripts/dx8/app.js');
+
+    // Load the app.js directly from the cohesion-services directory.
+    $app_js_library = array_shift($libraries['cohesion-admin-scripts']['js'][$path]);
+    $libraries['cohesion-admin-scripts']['js'][$cohesion_dev_path] = $app_js_library;
+  }
+}
