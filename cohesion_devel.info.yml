@@ -1,7 +1,7 @@
 name: Site Studio developer
 type: module
 description: 'Developer features for Site Studio.'
-core_version_requirement: ^9 || ^10
+core_version_requirement: ^9 || ^10 || ^11
 package: Site Studio
 dependencies:
   - cohesion
