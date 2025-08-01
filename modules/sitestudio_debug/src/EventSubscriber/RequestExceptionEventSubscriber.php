@@ -59,7 +59,7 @@ class RequestExceptionEventSubscriber implements EventSubscriberInterface {
     }
 
     // Try to extract from request data
-    $data = $event->getData();
+    $data = $event->getPayload();
     if (is_array($data)) {
       if (isset($data['entity_id'])) {
         return $data['entity_id'];
@@ -88,7 +88,7 @@ class RequestExceptionEventSubscriber implements EventSubscriberInterface {
     }
 
     // Try to extract from request data
-    $data = $event->getData();
+    $data = $event->getPayload();
     if (is_array($data)) {
       if (isset($data['entity_type'])) {
         return $data['entity_type'];
