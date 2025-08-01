@@ -40,15 +40,25 @@ class EventReportController extends ControllerBase {
     ];
     $rows = [];
     foreach ($this->loggerService->getAllEvents() as $event) {
-      $edit_url = '';
-      if (!empty($event->type) && !empty($event->id)) {
+      $edit_url = NULL;
+      $operations_cell = NULL;
+      if (!empty($event->entity_type) && !empty($event->entity_id)) {
         try {
-          $url = Url::fromRoute("entity.{$event->type}.edit_form", [
-            $event->type => $event->id,
+          $url = Url::fromRoute("entity.{$event->entity_type}.edit_form", [
+            $event->entity_type => $event->entity_id,
+            'content_entity_type' => $event->entity_type,
           ]);
-          $edit_url = \Drupal::l($this->t('Edit'), $url);
+          $edit_url = [
+            '#type' => 'link',
+            '#title' => $this->t('Edit'),
+            '#url' => $url,
+            '#attributes' => [
+              'class' => ['button', 'button--small'],
+            ],
+          ];
+          $operations_cell = ['data' => $edit_url];
         } catch (\Exception $e) {
-          $edit_url = '';
+          // If the entity type or ID is invalid, we skip creating the edit link.
         }
       }
       $rows[] = [
@@ -59,12 +69,13 @@ class EventReportController extends ControllerBase {
         'status_code' => $event->status_code,
         'request_id' => $event->request_id,
         'exception_message' => $event->exception_message,
-        'data' => $event->data,
+        'payload' => substr($event->data, 0, 100) . "...",
         'response_data' => $event->response_data,
         'request_duration' => isset($event->request_duration) ? number_format($event->request_duration, 3) : '',
-        'operations' => $edit_url,
+        'operations' => $operations_cell,
       ];
     }
+
     return [
       '#type' => 'table',
       '#header' => $header,
