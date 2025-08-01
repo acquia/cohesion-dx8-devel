@@ -1,0 +1,85 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for sitestudio_debug.
+ */
+
+use Drupal\Core\Database\Schema;
+
+/**
+ * Implements hook_schema().
+ */
+function sitestudio_debug_schema() {
+  $schema['sitestudio_debug_events'] = [
+    'description' => 'Stores Site Studio API request exception events.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+      ],
+      'timestamp' => [
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+      'method' => [
+        'type' => 'varchar',
+        'length' => 16,
+        'not null' => TRUE,
+      ],
+      'uri' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'data' => [
+        'type' => 'text',
+        'size' => 'big',
+        'not null' => FALSE,
+      ],
+      'status_code' => [
+        'type' => 'int',
+        'not null' => FALSE,
+      ],
+      'request_id' => [
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => FALSE,
+      ],
+      'exception_message' => [
+        'type' => 'text',
+        'not null' => FALSE,
+      ],
+      'response_data' => [
+        'type' => 'text',
+        'size' => 'big',
+        'not null' => FALSE,
+      ],
+      'request_duration' => [
+        'type' => 'float',
+        'not null' => FALSE,
+      ],
+      'entity_id' => [
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => FALSE,
+        'description' => 'The ID of the entity being processed when the exception occurred.',
+      ],
+      'entity_type' => [
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => FALSE,
+        'description' => 'The type of entity being processed when the exception occurred.',
+      ],
+    ],
+    'primary key' => ['id'],
+    'indexes' => [
+      'timestamp' => ['timestamp'],
+      'request_id' => ['request_id'],
+      'entity_type' => ['entity_type'],
+      'entity_id' => ['entity_id'],
+    ],
+  ];
+  return $schema;
+}
+

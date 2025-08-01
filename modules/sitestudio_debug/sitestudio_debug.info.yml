@@ -1,0 +1,7 @@
+name: Site Studio Debug [experimental]
+machine_name: sitestudio_debug
+type: module
+description: 'Debugging module to catch failed requests [experimental].'
+core_version_requirement: ^10 || ^11
+package: Site Studio
+

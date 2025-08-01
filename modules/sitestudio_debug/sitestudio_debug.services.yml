@@ -1,0 +1,10 @@
+services:
+  sitestudio_debug.event_logger:
+    class: Drupal\sitestudio_debug\Service\EventLoggerService
+    arguments: ['@database']
+  sitestudio_debug.request_exception_subscriber:
+    class: Drupal\sitestudio_debug\EventSubscriber\RequestExceptionEventSubscriber
+    arguments: ['@sitestudio_debug.event_logger']
+    tags:
+      - { name: event_subscriber }
+
