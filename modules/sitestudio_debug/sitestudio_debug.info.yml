@@ -5,3 +5,6 @@ description: 'Debugging module to catch failed requests [experimental].'
 core_version_requirement: ^10 || ^11
 package: Site Studio
 
+dependencies:
+  - 'cohesion:cohesion (>=8.x-8.2.0)'
+
