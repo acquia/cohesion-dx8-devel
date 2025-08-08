@@ -1,0 +1,8 @@
+sitestudio_debug.report:
+  path: '/admin/reports/sitestudio-debug-events'
+  defaults:
+    _controller: '\Drupal\sitestudio_debug\Controller\EventReportController::report'
+    _title: 'Site Studio Debug Events'
+  requirements:
+    _permission: 'access administration pages'
+

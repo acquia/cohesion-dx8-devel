@@ -6,7 +6,7 @@ This library adds a number of useful features for developers working on maintain
 - Sass variables: A page where you can quickly see what Sass variables are set on the site.
 - Rebuild. A quick link to run a Site Studio rebuild.
 
-## Installation with Composer
+### Installation with Composer
 
 Using composer is the preferred way of managing your module as composer handles dependencies automatically and there is less margin for error. You can find out more about composer and how to install it here: https://getcomposer.org/. It is not recommended to edit your composer.json file manually.
 
@@ -18,7 +18,7 @@ Run the following commands to require the module:
 composer require acquia/cohesion-dx8-devel
 ```
 
-## Enable The Module
+### Enable The Module
 
 You can now enable the modules via drush with the following commands:
 
@@ -26,7 +26,7 @@ You can now enable the modules via drush with the following commands:
 drush pm-enable cohesion_devel
 ```
 
-## Libraries
+### Libraries
 
 The stylesheet inspector requires:
 
@@ -34,6 +34,22 @@ The stylesheet inspector requires:
 - code-prettify (https://github.com/google/code-prettify)
 
 They should be installed in `/libraries/cssbeautify` and `/libraries/code-prettify` respectively.
+
+## Site Studio debug sub-module
+
+A debug module is also included to aid with debugging failed API requests, this is an experimental that works with Site Studio v8.2+ only.
+
+The module captures events triggered when an API request fails and logs details of the request in a table.
+
+Note: payloads are captured which can be large and create a sizable database over time so this module should be used with caution.
+
+### Enable The Module
+
+To enable the debug module, run the following command:
+
+```
+drush pm-enable sitestudio_debug
+```
 
 ## License
 

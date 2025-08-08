@@ -1,0 +1,7 @@
+sitestudio_debug.report:
+  title: 'Site Studio Debug Events'
+  description: 'View Site Studio debug events and reports'
+  route_name: sitestudio_debug.report
+  parent: system.admin_reports
+  weight: 10
+
