@@ -22,13 +22,8 @@ class EventLoggerService {
    *   The event data to log.
    */
   public function logEvent(array $event_data) {
-    // Filter event data to only allowed fields.
-    $filtered_data = array_intersect_key(
-      $event_data,
-      array_flip(self::$allowedFields)
-    );
     $this->database->insert('sitestudio_debug_events')
-      ->fields($filtered_data)
+      ->fields($event_data)
       ->execute();
   }
 
