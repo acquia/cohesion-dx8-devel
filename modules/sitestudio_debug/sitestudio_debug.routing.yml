@@ -6,3 +6,11 @@ sitestudio_debug.report:
   requirements:
     _permission: 'access administration pages'
 
+sitestudio_debug.event_detail:
+  path: '/admin/reports/sitestudio-debug-events/{event_id}'
+  defaults:
+    _controller: '\Drupal\sitestudio_debug\Controller\EventDetailController::view'
+    _title: 'Event Detail'
+  requirements:
+    _permission: 'access administration pages'
+    event_id: \d+

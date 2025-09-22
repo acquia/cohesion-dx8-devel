@@ -40,15 +40,28 @@ class EventReportController extends ControllerBase {
     ];
     $rows = [];
     foreach ($this->loggerService->getAllEvents() as $event) {
-      $edit_url = NULL;
-      $operations_cell = NULL;
+      $operations_links = [];
+
+      // Add view detail link
+      $detail_url = Url::fromRoute('sitestudio_debug.event_detail', ['event_id' => $event->id]);
+      $view_link = [
+        '#type' => 'link',
+        '#title' => $this->t('View'),
+        '#url' => $detail_url,
+        '#attributes' => [
+          'class' => ['button', 'button--small'],
+        ],
+      ];
+      $operations_links['view'] = $view_link;
+
+      // Add edit link if entity exists
       if (!empty($event->entity_type) && !empty($event->entity_id)) {
         try {
           $url = Url::fromRoute("entity.{$event->entity_type}.edit_form", [
             $event->entity_type => $event->entity_id,
             'content_entity_type' => $event->entity_type,
           ]);
-          $edit_url = [
+          $edit_link = [
             '#type' => 'link',
             '#title' => $this->t('Edit'),
             '#url' => $url,
@@ -56,11 +69,21 @@ class EventReportController extends ControllerBase {
               'class' => ['button', 'button--small'],
             ],
           ];
-          $operations_cell = ['data' => $edit_url];
+          $operations_links['edit'] = $edit_link;
         } catch (\Exception $e) {
           // If the entity type or ID is invalid, we skip creating the edit link.
         }
       }
+
+      // Set operations cell with all available links
+      $operations_cell = [
+        'data' => [
+          '#theme' => 'item_list',
+          '#items' => $operations_links,
+          '#attributes' => ['class' => ['operations-list', 'inline']],
+        ],
+      ];
+
       $rows[] = [
         'id' => $event->id,
         'timestamp' => date('Y-m-d H:i:s', $event->timestamp),
@@ -70,7 +93,7 @@ class EventReportController extends ControllerBase {
         'request_id' => $event->request_id,
         'exception_message' => $event->exception_message,
         'payload' => substr($event->data, 0, 100) . "...",
-        'response_data' => $event->response_data,
+        'response_data' => substr($event->response_data, 0, 100) . "...",
         'request_duration' => isset($event->request_duration) ? number_format($event->request_duration, 3) : '',
         'operations' => $operations_cell,
       ];
