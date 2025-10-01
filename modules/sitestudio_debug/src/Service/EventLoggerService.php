@@ -8,6 +8,7 @@ use Drupal\Core\Database\Connection;
  *
  */
 class EventLoggerService {
+
   /** @var \Drupal\Core\Database\Connection */
   protected $database;
 
@@ -38,6 +39,23 @@ class EventLoggerService {
       ->orderBy('timestamp', 'DESC')
       ->execute()
       ->fetchAll();
+  }
+
+  /**
+   * Fetches a specific event by ID.
+   *
+   * @param int $event_id
+   *   The ID of the event to fetch.
+   *
+   * @return object|null
+   *   The event object, or NULL if not found.
+   */
+  public function getEvent(int $event_id) {
+    return $this->database->select('sitestudio_debug_events', 'e')
+      ->fields('e')
+      ->condition('id', $event_id)
+      ->execute()
+      ->fetchObject();
   }
 
 }
