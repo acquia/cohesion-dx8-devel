@@ -3,6 +3,7 @@
 namespace Drupal\sitestudio_debug\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Render\Markup;
 use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\sitestudio_debug\Service\EventLoggerService;
@@ -98,6 +99,9 @@ class EventDetailController extends ControllerBase {
     }
 
     if (!empty($event->data)) {
+      $decoded_data = json_decode($event->data, TRUE);
+      $formatted_data = $decoded_data ? json_encode($decoded_data, JSON_PRETTY_PRINT) : $event->data;
+
       $build['request_data'] = [
         '#type' => 'details',
         '#title' => $this->t('Request Data'),
@@ -105,13 +109,16 @@ class EventDetailController extends ControllerBase {
         'content' => [
           '#type' => 'html_tag',
           '#tag' => 'pre',
-          '#value' => $event->data,
+          '#value' => Markup::create($formatted_data),
           '#attributes' => ['class' => ['request-data']],
         ],
       ];
     }
 
     if (!empty($event->response_data)) {
+      $decoded_response = json_decode($event->response_data, TRUE);
+      $formatted_response = $decoded_response ? json_encode($decoded_response, JSON_PRETTY_PRINT) : $event->response_data;
+
       $build['response_data'] = [
         '#type' => 'details',
         '#title' => $this->t('Response Data'),
@@ -119,7 +126,7 @@ class EventDetailController extends ControllerBase {
         'content' => [
           '#type' => 'html_tag',
           '#tag' => 'pre',
-          '#value' => $event->response_data,
+          '#value' => Markup::create($formatted_response),
           '#attributes' => ['class' => ['response-data']],
         ],
       ];
