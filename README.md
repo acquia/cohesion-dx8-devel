@@ -15,6 +15,7 @@ Open up your terminal and navigate to your project root directory.
 Run the following commands to require the module:
 
 ```
+composer config repositories.cohesion-dx8-devel vcs https://github.com/acquia/cohesion-dx8-devel
 composer require acquia/cohesion-dx8-devel
 ```
 
